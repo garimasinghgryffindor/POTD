@@ -67,3 +67,40 @@ class Solution{
 	}
 
 };
+
+
+
+class Solution{
+	public:
+	int TotalCount(string str){
+	    // using tabulation
+	    int n = str.length();
+	    vector<vector<int>> dp(n+1, vector<int>(9*n+1, 0));
+	   // int idx = 0, prevSum = 0;
+	    for(int i = 0; i < 9*n+1; i++) {
+	        dp[n][i] = 1;
+	    }
+	    
+	    for(int idx = n-1; idx >= 0; idx--) {
+	        for(int prevSum = 9*idx; prevSum >= 0; prevSum--) {
+	            int count = 0;
+        	    // where can we cut
+        	    int sum = 0;
+        	    for(int j = idx; j < str.length(); j++) {
+        	        
+        	       // for(int i = idx; i <= j; i++) {
+        	            sum += str[j] - '0';
+        	       // }
+        	        if(sum >= prevSum) {
+        	            count += dp[j+1][sum];
+        	        }
+        	    }
+        	    
+        	    dp[idx][prevSum] = count;
+	        }
+	    }
+	    
+	    return dp[0][0];
+	}
+
+};

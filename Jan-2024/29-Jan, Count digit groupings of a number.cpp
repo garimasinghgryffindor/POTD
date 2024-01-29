@@ -34,3 +34,36 @@ class Solution {
 	}
 };
 
+
+class Solution{
+	public:
+	// using memoization
+	int recur(string str, int idx, int prevSum, vector<vector<int>>&mem) {
+	    if(idx == str.length()) return 1;
+	    
+	    if(mem[idx][prevSum] != -1) return mem[idx][prevSum];
+	    
+	    int count = 0;
+	    // where can we cut
+	    for(int j = idx; j < str.length(); j++) {
+	        int sum = 0;
+	        for(int i = idx; i <= j; i++) {
+	            sum += str[i] - '0';
+	        }
+	        if(sum >= prevSum) {
+	            count += recur(str, j+1, sum, mem);
+	        }
+	    }
+	    
+	    return (mem[idx][prevSum] = count);
+	}
+	
+	int TotalCount(string str){
+	    // Code here
+	    int n = str.length();
+	    vector<vector<int>> mem(n+1, vector<int>(9*n+1, -1));
+	    int idx = 0, prevSum = 0;
+	    return recur(str, idx, prevSum, mem);
+	}
+
+};

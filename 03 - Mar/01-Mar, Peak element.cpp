@@ -14,6 +14,6 @@ class Solution
            if(arr[i] > arr[i-1] && arr[i] > arr[i+1]) return i;
        }
        
-       return n-1;
+       return n-1
     }
 };

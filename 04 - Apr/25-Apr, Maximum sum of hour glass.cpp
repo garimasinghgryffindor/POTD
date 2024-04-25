@@ -1,5 +1,3 @@
-// User function Template for C++
-
 class Solution {
   public:
     int findMaxSum(int n, int m, vector<vector<int>> mat) {

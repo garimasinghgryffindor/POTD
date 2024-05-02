@@ -1,7 +1,7 @@
 class Solution
 {
     public:
-    // function should print the nodes at k distance from root
+
     vector<int> Kdistance(struct Node *root, int k)
     {
         vector<int>res;
@@ -30,3 +30,7 @@ class Solution
         return res;
     }
 };
+
+
+
+
